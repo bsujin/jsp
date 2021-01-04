@@ -40,6 +40,7 @@ scope 객체 실습
 해당 요청을 처리해줄 servlet 생성(kr.or.ddit.servlet.scope.Scope.java)
 GET 요청에 대해서는 화면을 webapp/jsp/scope.jsp로 응답생성 위임
 
+http ://localhost.jsp 
 scope.jsp에는 하나의 input 태그(name-scope) 와 submit 버튼을 생성
 전송 메소드는 POST, 전송 주소는 /scope
 
@@ -50,6 +51,7 @@ request 	: 속성명=request, 속성값=scope파라미터값 + "_request"
 session 	: 속성명=session, 속성값=scope파라미터값 + "_session"
 application : 속성명=application, 속성값=scope파라미터값 + "_application"
 
+// 검증하기 
 속성 설정이 끝나면 webapp/jsp/scopeResult.jsp로 forward
 scopeResult.jsp에서는 Scope servlet 에서 설정한 3개의 속성을
 속성명 : 속성값 
@@ -67,12 +69,58 @@ scope 객체의 속성관련 메소드
 속성 이름 검색 : 스코프객체:getAttributeNames(), 반환타입 : Enumeration
 
 
+테스트
+
+1] 최초 접속 
+
+1. localhost/scope 접속
+2. input tag에 brown값 입력 후 전송 버튼 클릭
+3. 결과 화면 확인
+	request : brown_request
+	session : brown_session
+	application : brown_application
+
+2] 1]번과 '같은' 브라우저를 사용하여
+	http://localhost:8081/jsp/scopeResult.jsp 로 바로 접속 시
+	request : null
+	session :  brown_session
+	application : 	brown_application 
+	
+3] 1]번과 '다른' 브라우저를 사용하여 
+	http://localhost:8081/jsp/scopeResult.jsp로 바로 접속 시
+	==> 브라우저 - 사용자 즉, 다른 사용자가 된다는 뜻 (Client2)
+	** application 은 공용이므로 값이 나온다
+	
+	request : null
+	session :  null
+	application : 	brown_application 
+	
+	
+4] 3]번과 동일한 브라우저를 사용하여
+	localhost/scope로 접속
+	input태그에 sally 값 입력 후 접속
+	
+	request :sally_request
+	session :  sally_session
+	application : 	sally_application 
+	
 
 
+5] 1]번과 동일한 브라우저를 사용하여
+	localhost/jps/scopeResult.jsp로 접속
+
+	request : null
+	session : brown_session
+	application : sally_application	 실행시 마지막에 저장되어있는것으로 
+	
+ex. 1]번 브라우저 :크롬
+	3]번 브라우조 : edge
 
 
-
-
+	** 저장되는 방식 
+	request :  해당 jsp
+	session : 해당 접속자
+	application  : 해당 웹서버에 저장 , 최종에 접속한 서버를 저장한다 
 
 
 
