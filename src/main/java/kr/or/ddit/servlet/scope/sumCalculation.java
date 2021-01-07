@@ -30,7 +30,8 @@ public class sumCalculation extends HttpServlet{
 //		if(start>=end) {
 //			req.getRequestDispatcher("/jsp/sumCalculation.jsp").forward(req, resp);
 //		}else if(start<end) {
-			req.getRequestDispatcher("/jsp/sumResult.jsp").forward(req, resp);
+			req.getRequestDispatcher("/jsp/sumCalculation.jsp").forward(req, resp);
+//			주소를 치고 들어가면 기본적으로 get방식  
 //		}
 	}
 	
@@ -43,6 +44,7 @@ public class sumCalculation extends HttpServlet{
 //		if(start<end) {
 		HttpSession session = req.getSession();
 		
+		//start부터 end까지의 합 
 		int sum =0;
 		for(int i=start; i<=end; i++) {
 			sum += i;

@@ -1,0 +1,73 @@
+
+페이지 모듈화
+	1. 동적 include (forward와 비슷)
+		RequestDispatcher.include() 
+		*차이점 :  실행시점 
+		
+	2. 정적 include
+		<%@ include file=""/>
+		*차이점 : 컴파일 시점 
+		
+		
+		
+에러 페이지
+	1. jsp 페이지 별로 errorPage 속성에 에러 발생시 이동할 jsp 파일 기술 (잘 사용하지 x - 유지보수에 대한 문제)
+	2. error코드(상태코드)별 예외 페이지 설정
+		- web.xml 에서 설정 : 404, 500
+		
+	3. 예외 타입별 예외 페이지 설정 
+		
+		시나리오) 
+		1. ArithmeticException이 발생되는 jsp파일을 하나 생성 - webapp/jsp/ari.jsp
+			 -> error를 발생할 때 생기는 페이지
+			 
+		2. ArithmeticException이 발생되었을 때 응답을 대신 생성해줄 webapp/error/type/ariError.jsp를 생성
+			-> 대신 응답을 생성해주는 페이지
+			 
+		3. web.xml에 예외 타입별 에러 페이지 설정
+		4. 서버 재실행 ( web.xml을 실행하면 재시작 필요)
+		
+		5. localhost/jsp/ari.jsp로 접속해서 arithmeticException 발생하게끔 유도하여
+		   설정한 에러 페이지로 이동되는지 확인 
+		   
+		
+	탐구 과제
+	
+	1. webapp/error/type/runError.jsp를 생성 (텍스트는 본인 편한대로)
+	
+	2. RuntimeException 에러가 발생할 수 있는 jsp 페이지 생성
+	   webapp/jsp/run.jsp
+	   
+	3. web.xml에 RuntimeException 예외에 대해 runError.jsp 페이지가 응답을 생성하도록 설정
+	 
+	4. localhost/jsp/run.jsp 로 접속
+	
+	5. **** 어떤 에러 페이지가 나오는지 확인 
+	
+	6. **** localhost/jsp/ari.jsp 접속시 어떤 에러 페이지로 이동하는지 확인 
+	
+	7. arithmeticException, runtimeException 이 발생한 것은 서버 에러로 볼 수 있는데,
+		500.html(jsp) 에러페이지에서 응답이 생성되지 않았다.
+		
+		  <error-page> element를 기술한 순서가 응답에 영향을 미치는지 확인 
+		==> error-page element 기술순서가 영향을 미치지 않는다.
+		  즉, 예외 타입의 에러페이지 설정이 에러코드 에러페이지 설정보다 우선이 된다 
+	
+	
+	---------------------------------------------------------------------------
+	
+cookie 확인
+	1. 개발자 도구
+	2. script
+		document.cookie (모든쿠키 확인)
+		
+cookie 구성
+	쿠키이름1 = 쿠키값1; 쿠키이름2 = 쿠키값2; 쿠키이름3 = 쿠키값3; 쿠키이름4 = 쿠키값4;
+	 ==> 해당 도메인에서 설정되어있는 모든 쿠키에 대해 확인
+	 
+	 특정 쿠키의 값을 확인하려면 ?? 	document.cookie를 파싱해야한다 	   
+	 
+	 예 ) 문자열 저장    -  userid = brown; rememberme=Y; test=t;
+	 
+
+	
