@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
+
+<!-- 파일 이름 설정 -->
+<mapper namespace="users">
+	<!-- select 된 컬럼과 resultType에 기술된 클래스의 필드 이름이 동일하면 자동으로 값을 넣어준다 -->
+
+	<select id="selectAllUser" resultType="userVo">
+		SELECT * FROM users
+	</select>
+
+	<!-- java에서 전달받는 parameter를 String타입으로 받는다 -->
+	<select id="selectUser"	resultType="userVo" parameterType="String">
+		SELECT * FROM
+		users where userid = #{value}
+	</select>
+
+
+	<!-- 페이징 처리하는 쿼리문 -->
+	<select id="selectPagingUser" resultType="userVo" parameterType="pageVo">
+		SELECT *
+		FROM
+			(SELECT ROWNUM rn, a.*
+			 FROM 
+			 ( SELECT *
+				FROM users
+				ORDER BY userid) a
+			WHERE ROWNUM &lt;= #{page} * #{pageSize})
+		WHERE rn BETWEEN (#{page} - 1) * #{pageSize} + 1 AND #{page} * #{pageSize}
+	</select>
+
+
+</mapper>
