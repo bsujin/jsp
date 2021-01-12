@@ -3,6 +3,7 @@ package kr.or.ddit.user.respository;
 import java.util.List;
 
 import kr.or.ddit.common.model.PageVo;
+import kr.or.ddit.user.model.EmpVo;
 import kr.or.ddit.user.model.UserVo;
 
 public interface UserDaoI {
@@ -25,6 +26,10 @@ public interface UserDaoI {
 //	List<UserVo> selectPagingUser(int page, int pageSize);
 	List<UserVo> selectPagingUser(PageVo pageVo);
 	
+	// emp 정보 가져오기
+	List<EmpVo> selectAllempList();
 	
+	// 사용자 전체 수 조회
+	int selectAllUserCount();
 	
 }

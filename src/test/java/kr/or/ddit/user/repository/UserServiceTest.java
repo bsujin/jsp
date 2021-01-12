@@ -3,6 +3,7 @@ package kr.or.ddit.user.repository;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -56,7 +57,8 @@ public class UserServiceTest {
 		UserVo user = userService.selectUser(userid);
 
 		/***Then***/
-		assertNull(userid);
+		assertNotNull(userid);
+//		assertNotEquals("문", user.getUsernm());
 		
 	}
 	
@@ -72,10 +74,13 @@ public class UserServiceTest {
 		PageVo pageVo = new PageVo(2, 5);
 		
 		/***When***/
-		List<UserVo> pageList = userService.selectPagingUser(pageVo);
+		Map<String, Object> map = userService.selectPagingUser(pageVo);
+		List<UserVo> pageList = (List<UserVo>)map.get("userList");
+		int userCnt = (int)map.get("cnt");
 
 		/***Then***/
 		assertEquals(5, pageList.size());
+		assertEquals(16, userCnt);
 		
 	}
 	

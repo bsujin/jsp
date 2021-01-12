@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.db.MybatisUtill;
+import kr.or.ddit.user.model.EmpVo;
 import kr.or.ddit.user.model.UserVo;
 
 public class UserDao implements UserDaoI {
@@ -57,6 +58,34 @@ public class UserDao implements UserDaoI {
 		
 		return pageList;
 	}
+
+	// emp List 가져오기 
+	@Override
+	public List<EmpVo> selectAllempList() {
+		SqlSession sqlSession = MybatisUtill.getSqlSession();
+		
+		List<EmpVo> empList = sqlSession.selectList("users.selectAllEmpList");
+		
+		sqlSession.close();
+		
+		return empList;
+	}
+
+	//사용자 전체 수 조회 
+	@Override
+	public int selectAllUserCount() {
+		
+		SqlSession sqlSession = MybatisUtill.getSqlSession();
+		
+		// 한건을 조회하므로 한건 
+		int userCnt = sqlSession.selectOne("users.selectAllUserCnt");
+		sqlSession.close();
+
+		return userCnt;
+	}
+	
+	
+	
 
 
 	// 페이지 처리 

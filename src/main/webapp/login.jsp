@@ -134,7 +134,7 @@
 			 placeholder="사용자 아이디" required autofocus name="userid" value="">
 			   <label for="inputPassword" class="sr-only">Password</label>
         		<input type="password" id="inputPassword" class="form-control"
-        	   placeholder="Password" required name="pass" value="brownpass">
+        	   placeholder="Password" required name="pass" value="brownPass">
        	 <div class="checkbox">
 				<label> <input type="checkbox" id="rememberme" value="remember-me"> 
 				Remember me		</label>

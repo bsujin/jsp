@@ -19,7 +19,7 @@ import kr.or.ddit.user.service.UserServiceI;
 @WebServlet("/loginController.do")
 public class LoginController2 extends HttpServlet{
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController2.class);
+//	private static final Logger logger = LoggerFactory.getLogger(LoginController2.class);
 	private UserServiceI userService = new UserService();
 	
 	@Override

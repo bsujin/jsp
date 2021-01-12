@@ -2,6 +2,7 @@ package kr.or.ddit.user.repository;
 
 import static org.junit.Assert.*;
 
+import java.nio.file.spi.FileSystemProvider;
 import java.util.List;
 
 import org.junit.Test;
@@ -61,6 +62,19 @@ public class UserDaoTest {
 
 		/***Then***/
 		assertEquals(5, pageList.size());
+	}
+	
+	@Test
+	public void selectAllUserCnt() {
+		/***Given***/
+		UserDaoI userdao = new UserDao();
+
+		/***When***/
+		int userCnt = userdao.selectAllUserCount();
+//		System.out.println(userCnt);
+		
+		/***Then***/
+		assertEquals(16, userCnt);
 	}
 
 }
