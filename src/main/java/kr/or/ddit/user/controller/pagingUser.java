@@ -18,7 +18,7 @@ import kr.or.ddit.user.service.UserServiceI;
 @WebServlet("/pagingUser")
 public class pagingUser extends HttpServlet {
 	
-	UserServiceI service = new UserService();
+	private UserServiceI service = new UserService();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -59,6 +59,9 @@ public class pagingUser extends HttpServlet {
 		
 		// 4라는 값을 만들어서 넣어주기 
 		req.setAttribute("pagination", pagination);
+		
+		// 현재의 페이지를 나타내기 위한 pageVo를 넣어준다 - 속성값 
+		req.setAttribute("pageVo", vo);
 		
 		req.getRequestDispatcher("/user/pagingUser.jsp").forward(req, resp);
 //		req.getRequestDispatcher("/user/allUser.jsp").forward(req, resp);
