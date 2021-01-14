@@ -51,7 +51,7 @@ public class pagingUser extends HttpServlet {
 //		List<UserVo> pageList = service.selectPagingUser(vo);
 		Map<String, Object> map = service.selectPagingUser(vo);
 		List<UserVo> pageList = (List<UserVo>)map.get("userList");
-		int userCnt = (int)map.get("cnt");
+		int userCnt = (int)map.get("userCnt");
 		// 페이징 계산 
 		int pagination = (int)Math.ceil((double)userCnt/ pageSize);   //숫자 4라는 값을 만들어 낼 수 있다 
 		

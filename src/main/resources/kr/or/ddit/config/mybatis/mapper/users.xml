@@ -1,46 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- <mapper namespace="org.mybatis.example.BlogMapper"> -->
-
-<!-- 파일 이름 설정 -->
 <mapper namespace="users">
-	<!-- select 된 컬럼과 resultType에 기술된 클래스의 필드 이름이 동일하면 자동으로 값을 넣어준다 -->
+	<!-- select된 컬럼과 resultType에 기술한 클래스의 필드 이름이 동일하면 자동으로 값을 넣어준다
+		 resultType : 한 행의 정보를 저장할 수 있는 클래스 타입을 명시  -->
+  <select id="selectAllUser" resultType="userVo">
+    SELECT * FROM users
+  </select>
+  
+  <select id="selectUser" resultType="userVo" parameterType="String">
+  	SELECT * FROM users WHERE userid = #{value}
+  </select>
+  
+  <select id="selectPagingUser" resultType="userVo" parameterType="pageVo">
+  	SELECT *
+	FROM
+		(SELECT ROWNUM rn, a.*
+	FROM
+   		 (SELECT *
+   			 FROM USERS
+   			 ORDER BY userid)a
+   	 WHERE ROWNUM &lt;= #{page} * #{pageSize})
+	WHERE rn BETWEEN (#{page}-1) * #{pageSize}+1 AND #{page} * #{pageSize}
+  </select>
 
-	<select id="selectAllUser" resultType="userVo">
-		SELECT * FROM users
-	</select>
-
-	<!-- java에서 전달받는 parameter를 String타입으로 받는다 -->
-	<select id="selectUser"	resultType="userVo" parameterType="String">
-		SELECT * FROM
-		users where userid = #{value}
-	</select>
-
-
-	<!-- 페이징 처리하는 쿼리문 -->
-	<select id="selectPagingUser" resultType="userVo" parameterType="pageVo">
-		SELECT *
-		FROM
-			(SELECT ROWNUM rn, a.*
-			 FROM 
-			 ( SELECT *
-				FROM users
-				ORDER BY userid) a
-			WHERE ROWNUM &lt;= #{page} * #{pageSize})
-		WHERE rn BETWEEN (#{page} - 1) * #{pageSize} + 1 AND #{page} * #{pageSize}
-	</select>
-	
-<!-- 	전체 회원 리스트 조회  -->
-	<select id="selectAllEmpList" resultType="empVo">
-		SELECT * FROM emp
-	</select>
-	
-<!-- 	전체 사용자 수 조회  -->
-	<select id="selectAllUserCnt" resultType="int">
-		select count(*) from users
-	</select>
-
-
+   <select id="selectAllUserCnt" resultType="int">
+ 		SELECT COUNT(*) FROM users
+   </select>
+   
+  <!-- 사용자 정보 수정 -->
+   <update id="modifyUser" parameterType="userVo">    <!-- update하는거니깐 resultType은 없음 -->
+   UPDATE users SET usernm = #{usernm},
+           pass = #{pass},
+           reg_dt = #{reg_dt},
+           alias = #{alias},
+           addr1 = #{addr1},
+           addr2 = #{addr2},
+           zipcode = #{zipcode}
+	WHERE userid = #{userid}
+   </update>
+   
+<!--    사용자 등록 -->
+   <insert id="registerUser" parameterType="userVo">
+     INSERT INTO users (userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode)
+        VALUES (#{userid}, #{usernm}, #{pass}, sysdate, #{alias}, #{addr1}, #{addr2}, #{zipcode})
+   </insert>
+   
+<!--    사용자 삭제 -->
+	<delete id="deleteUser" parameterType="String">
+		delete users where userid = #{value}	
+	</delete>
 </mapper>
+

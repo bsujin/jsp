@@ -85,7 +85,7 @@
 								</tr> -->
 								
 <!-- 								방법 2 : vo 에서 임의로 매소드를 추가하기  -->
-									<td><%=vo.getrReg_dt_fmt() %></td>
+									<td><%=vo.getReg_dt_fmt() %></td>
 	
 								
 								<%

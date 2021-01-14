@@ -18,129 +18,136 @@
 
 <title>PagingUser.Jsp</title>
 
-
-
 <%@include file="/common/common_lib.jsp"%>
 <link href="<%=request.getContextPath()%>/css/dashboard.css"
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
 </head>
 <script type="text/javascript">
+	// 문서 로딩이 완료되고 나서 실행되는 영역
+	$(function() {
+		$(".user").on("click", function() {
+			// this :   해당 버튼을 클릭한 객체 - user를 뜻함 (클릭 이벤트가 발생한 element)
 
-// 문서 로딩이 완료되고 나서 실행되는 영역
-$(function() {
-	$(".user").on("click", function() {
-		// this :   해당 버튼을 클릭한 객체 - user를 뜻함 (클릭 이벤트가 발생한 element)
-	
-		// data-속성명 : 지정한 속성명만 넣어주면 된다 data-userid --> userid
-		//	속성명은 대소문자를 무시하고 소문자로 인식한다
-		// data-userId ==> data-userid 로 인식하므로 애초에 대문자를 쓰지않는것이 좋음
-		
-		// console.log : 최근 브라우저에서 나온 기능- 출력해주는 기능 : 예전에는 alert를 사용함  - 요즘은 로그를 확인할 목적으로 잘 사용하지 않는다 
-// 		console.log($(this).data("userid"));
-		var userid = $(this).data("userid");
-		
-		//select를 해서 값을 userid
-		$("#userid").val(userid);
-		
-		//form태그를 이용하여 전송
-		$("#frm").submit();
-		
-	});
-})
-	
+			// data-속성명 : 지정한 속성명만 넣어주면 된다 data-userid --> userid
+			//	속성명은 대소문자를 무시하고 소문자로 인식한다
+			// data-userId ==> data-userid 로 인식하므로 애초에 대문자를 쓰지않는것이 좋음
 
+			// console.log : 최근 브라우저에서 나온 기능- 출력해주는 기능 : 예전에는 alert를 사용함  - 요즘은 로그를 확인할 목적으로 잘 사용하지 않는다 
+			// 		console.log($(this).data("userid"));
+			var userid = $(this).data("userid");
+
+			//select를 해서 값을 userid
+			$("#userid").val(userid);
+
+			//form태그를 이용하여 전송
+			$("#frm").submit();
+
+		});
+		$('#insertBtn').on('click', function() {
+			location.href = "/user/registUser.jsp"
+		})
+
+	})
 </script>
 <body>
-<!-- 	단순정보이므로 get방식 , method를 따로 지정 안해도 된다 -->
-	<form id="frm" action="<%=request.getContextPath() %>/user" >
+	<!-- 	단순정보이므로 get방식 , method를 따로 지정 안해도 된다 -->
+		<%@include file="/common/header.jsp"%>
+	<form id="frm" action="<%=request.getContextPath()%>/user">
 		<input type="hidden" id="userid" name="userid" value="/">
-	</form>
 
-	<%@include file="/common/header.jsp"%>
+		<div class="container-fluid">
+			<div class="row">
 
-	<div class="container-fluid">
-		<div class="row">
+				<div class="col-sm-3 col-md-2 sidebar">
+					<%@include file="/common/left.jsp"%>
+				</div>
 
-			<div class="col-sm-3 col-md-2 sidebar">
-				<%@include file="/common/left.jsp"%>
-			</div>
-
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
-				<div class="row">
-					<div class="col-sm-8 blog-main">
-						<h2 class="sub-header">사용자</h2>
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<tr>
-									<th>사용자 아이디</th>
-									<th>사용자 이름</th>
-									<th>사용자 별명</th>
-									<th>등록일시</th>
-								</tr>
+					<div class="row">
+						<div class="col-sm-8 blog-main">
+							<h2 class="sub-header">사용자</h2>
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<tr>
+										<th>사용자 아이디</th>
+										<th>사용자 이름</th>
+										<th>사용자 별명</th>
+										<th>등록일시</th>
+									</tr>
 
-								<!-- import유의 -->
-								<%
-// 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-								SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-// 								==> 메소드가 문자열을 리턴하므로 바로 reg_dt에 적용해주면 된다
-
-// 		1. for 문				List<UserVo> pageList = (List<UserVo>) request.getAttribute("pageList");
-// 								for (int i = 0; i < pageList.size(); i++) {
-// 									UserVo vo = pageList.get(i);
-
-//	2.향상된 for문 사용 
-								for(UserVo user : (List<UserVo>) request.getAttribute("pageList")){
-									%>
-								<tr class="user" data-userid="<%=user.getUserid()%>" >
-									<td><%=user.getUserid() %></td>
-									<td><%=user.getUsernm() %></td>
-									<td><%=user.getAlias() %></td>
-									<td><%=user.getrReg_dt_fmt() %></td>
+									<!-- import유의 -->
 									<%
-									}
+									// 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+									SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+									// 								==> 메소드가 문자열을 리턴하므로 바로 reg_dt에 적용해주면 된다
+
+									// 		1. for 문				List<UserVo> pageList = (List<UserVo>) request.getAttribute("pageList");
+									// 								for (int i = 0; i < pageList.size(); i++) {
+									// 									UserVo vo = pageList.get(i);
+
+									//	2.향상된 for문 사용 
+									for (UserVo user : (List<UserVo>) request.getAttribute("pageList")) {
+									%>
+									<tr class="user" data-userid="<%=user.getUserid()%>">
+										<td><%=user.getUserid()%></td>
+										<td><%=user.getUsernm()%></td>
+										<td><%=user.getAlias()%></td>
+										<td><%=user.getReg_dt_fmt()%></td>
+										<%
+										}
+										%>
+									
+								</table>
+							</div>
+
+							<a id="insertBtn" class="btn btn-default pull-right">사용자 등록</a>
+							<div class="text-center">
+								<%
+								PageVo pageVo = (PageVo) request.getAttribute("pageVo");
+								int pagination = (int) request.getAttribute("pagination");
 								%>
-								
-							</table>
-						</div>
+								<ul class="pagination">
 
-						<a class="btn btn-default pull-right">사용자 등록</a>
-
-						<div class="text-center">
-							<% PageVo pageVo  = (PageVo)request.getAttribute("pageVo");
-							   int pagination =	(int)request.getAttribute("pagination");%>
-							<ul class="pagination">
-								
-								<%-- pagination 값이 4이므로 1부터 4까지 4번 반복된다
+									<%-- pagination 값이 4이므로 1부터 4까지 4번 반복된다
 								     전체 사용자수 : 16명
 								     페이지 사이즈 : 5
 								     전체 페이지 수 : 4페이지
-								 --%> 
-								<!-- 가장 이전페이지 -->
-								 <li class="prev">
-									<a href="<%=request.getContextPath() %>/pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
-								</li>
-								<%for(int i = 1; i <= pagination; i++){
-									
-									if(pageVo.getPage() == i){%>
-										<li class="active"><span><%=i %></span></li>
-									<%}
-									else {%>
-										<li><a href="<%=request.getContextPath() %>/pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
-									<%} %>
-								<%} %>
-								<!-- 가장 마지막 페이지 -->
-								<li class="next">
-									<a href="<%=request.getContextPath() %>/pagingUser?page=<%=pagination %>&pageSize=<%=pageVo.getPageSize()%>">»</a>
-								</li>
-							</ul>
+								 --%>
+									<!-- 가장 이전페이지 -->
+									<li class="prev"><a
+										href="<%=request.getContextPath()%>/pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
+									</li>
+									<%
+									for (int i = 1; i <= pagination; i++) {
+
+										if (pageVo.getPage() == i) {
+									%>
+									<li class="active"><span><%=i%></span></li>
+									<%
+									} else {
+									%>
+									<li><a
+										href="<%=request.getContextPath()%>/pagingUser?page=<%=i%>&pageSize=<%=pageVo.getPageSize()%>"><%=i%></a></li>
+									<%
+									}
+									%>
+									<%
+									}
+									%>
+									<!-- 가장 마지막 페이지 -->
+									<li class="next"><a
+										href="<%=request.getContextPath()%>/pagingUser?page=<%=pagination%>&pageSize=<%=pageVo.getPageSize()%>">»</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </body>
 </html>

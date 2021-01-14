@@ -67,7 +67,7 @@
 									<td><%=vo.getUserid() %></td>
 									<td><%=vo.getUsernm() %></td>
 									<td><%=vo.getAlias() %></td>
-									<td><%=vo.getrReg_dt_fmt() %></td>
+									<td><%=vo.getReg_dt_fmt() %></td>
 									<%
 									}
 								%>
