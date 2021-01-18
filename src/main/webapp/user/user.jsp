@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +16,23 @@
 <link href="<%=request.getContextPath()%>/css/dashboard.css"
 	rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
-
-
+<script type="text/javascript">
+$(function(){
+	$("#modifyBtn").on("click", function(){
+		$("#frm").attr("method", "get");
+		$("#frm").attr("action", "<%=request.getContextPath()%>/userModify");
+		$("#frm").attr("action", "${pageContext.request.contextPath }/userModify");
+		$("#frm").submit();
+	});
+	
+	$("#deleteBtn").on("click", function(){
+		$("#frm").attr("method", "post");
+		$("#frm").attr("action", "<%=request.getContextPath()%>/deleteUser");
+		$("#frm").attr("action", "${pageContext.request.contextPath }/deleteUser");
+		$("#frm").submit();
+	});
+})
+</script>
 </head>
 
 <body>
@@ -31,7 +47,7 @@
          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
             <% UserVo user = (UserVo)request.getAttribute("user"); %>
-            <form class="form-horizontal" role="form" action="<%=request.getContextPath() %>/userModify" >
+            <form class="form-horizontal" role="form" id="frm">
                <input type="hidden" name="userid" value="<%=user.getUserid() %>"/>
                 
 			<!-- 사용자 프로필 사진 가져오기  -->
@@ -102,7 +118,8 @@
 
                <div class="form-group">
                   <div class="col-sm-offset-2 col-sm-10">
-                     <button type="submit" class="btn btn-default">정보 수정</button>
+                   		<button type="button" id="modifyBtn" class="btn btn-default">사용자 수정</button>
+						<button type="button" id="deleteBtn"  class="btn btn-default">사용자 삭제</button>
                   </div>
                </div>
             </form>

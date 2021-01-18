@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -10,8 +10,10 @@
 				<span class="sr-only">Toggle navigation</span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">JSP/SPRING</a>
+					</button>
+					S_USER : [${S_USER }]
+																		<!--  사용자 아이디  이름 표시하기  -->
+			<a class="navbar-brand" href="#">JSP/SPRING<c:if test="${S_USER !=null }"/> ${S_USER.userid }[${S_USER.usernm}]</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">

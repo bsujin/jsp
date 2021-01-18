@@ -63,8 +63,8 @@ public class pagingUser extends HttpServlet {
 		// 현재의 페이지를 나타내기 위한 pageVo를 넣어준다 - 속성값 
 		req.setAttribute("pageVo", vo);
 		
-		req.getRequestDispatcher("/user/pagingUser.jsp").forward(req, resp);
-//		req.getRequestDispatcher("/user/allUser.jsp").forward(req, resp);
+//		req.getRequestDispatcher("/user/pagingUser.jsp").forward(req, resp);
+		req.getRequestDispatcher("/user/pagingUser_sem.jsp").forward(req, resp);
 		
 	
 	

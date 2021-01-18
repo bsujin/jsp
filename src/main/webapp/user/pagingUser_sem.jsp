@@ -2,10 +2,9 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@page import="java.util.List"%>
-<%@page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>PagingUser.Jsp</title>
+<title>PagingUser_sem.Jsp</title>
 
 <%@include file="/common/common_lib.jsp"%>
 <link href="${pageContext.request.contextPath }/css/dashboard.css"
@@ -80,12 +79,13 @@
 										<th>등록일시</th>
 									</tr>
 
-									<c:forEach items="${pageList}" var="user">
-										<tr class="user" data-userid="${user.getUserid() }">
-											<td>${user.getUserid() }</td>
-											<td>${user.getUsernm() }</td>
-											<td>${user.getAlias() }</td>
-											<td>${user.getReg_dt_fmt() }</td>
+									<!-- import유의 -->
+									<c:forEach items="${pageList }" var="user">
+									<tr class="user" data-userid="${user.userid }">
+										<td>${user.userid }</td>
+										<td>${user.usernm }</td>
+										<td>${user.alias }</td>
+										<td>${user.reg_dt_fmt }</td>
 									</c:forEach>
 								</table>
 							</div>
@@ -93,7 +93,6 @@
 							<a id="insertBtn" class="btn btn-default pull-right">사용자 등록</a>
 							<div class="text-center">
 								<ul class="pagination">
-
 									<%-- pagination 값이 4이므로 1부터 4까지 4번 반복된다
 								     전체 사용자수 : 16명
 								     페이지 사이즈 : 5
@@ -101,22 +100,21 @@
 								 --%>
 									<!-- 가장 이전페이지 -->
 									<li class="prev"><a
-										href="${pageContext.request.contextPath }/pagingUser?page=1&pageSize=${pageVo.getPageSize() }">«</a>
+										href="${pgeContext.request.contextPath }/pagingUser?page=1&pageSize=${pageVo.pageSize }">«</a>
 									</li>
 									<c:forEach begin="1" end="${pagination }" var="i">
 										<c:choose>
-											<c:when test="${pageVo.getPage() } == ${i}">
+											<c:when test="${pageVo.page == i}">
 												<li class="active"><span>${i }</span></li>
 											</c:when>
 											<c:otherwise>
-												<li><a
-													href="${pageContext.request.contextPath }/pagingUser?page=${i}&pageSize=${pageVo.getPageSize() }">${i}</a></li>
+												<li><a href="${pageContext.request.contextPath }/pagingUser?page=${i }&pageSize=${pageVo.pageSize }">${i }</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									<!-- 가장 마지막 페이지 -->
 									<li class="next"><a
-										href="${pageContext.request.contextPath }/pagingUser?page=${pagination }&pageSize=${pageVo.getPageSize() }">»</a>
+										href="${pageContext.request.contextPath }/pagingUser?page=${pagination }&pageSize=${pageVo.pageSize }">»</a>
 									</li>
 								</ul>
 							</div>
@@ -128,3 +126,4 @@
 	</form>
 </body>
 </html>
+
