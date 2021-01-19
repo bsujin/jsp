@@ -5,7 +5,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
 	rel="stylesheet">
 
  <!-- Bootstrap core CSS -->

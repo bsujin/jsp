@@ -8,8 +8,8 @@
 <title>사용자 신규등록</title>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
 <%-- <% UserVo vo =(UserVo)request.getAttribute("user"); %> --%>
 <script>
 $(function(){
@@ -43,7 +43,7 @@ $(function(){
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 
-     		<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/registUser"
+     		<form class="form-horizontal" role="form" action="${pageContext.request.contextPath }/registUser"
      		method="post">
 
              	<div class="form-group">

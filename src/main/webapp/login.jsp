@@ -1,9 +1,6 @@
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,61 +13,61 @@
 <!-- 사용하지 않으므로 삭제 <link rel="icon" href="../../favicon.ico"> -->
 
 <title>Signin Template for Bootstrap **</title>
+<%-- <% 
+// 	Map<String, String[]> paramMap = request.getParameterMap();
+// 		System.out.println("userid: " + paramMap.get("userid"));
+// 		//배열인 맵 객체  - 배열을 인라인으로 보낼때에는 new를 사용한다 
+// 		paramMap.put("usernm",new String[]{"브라운"});
+%> --%>
 
 <%@ include file="/common/common_lib.jsp"%>
 <%--common_lib.jsp의 내용을 지금 기술되는 부분에 코드를 복사하여 붙여넣기 --%>
 
 <!-- cookies.get 을 사용하기 위한 api를 가져온다  -->
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-
-
-
-
 <script type="text/javascript">
-	/* 	$(document).ready(function() {
-	 }); */
+	
+// 	//자바의 CookieUtil 마이그레이션 : 기존에 있던것을 그대로 가져오는것 
+// 	function getCookieValue(cookieStr, cookieName) {
+// 		//console.log("getCookieValue 진입 확인");
+// 		//String cookies[] = cookieStr.split("; ");
+// 		var cookies = cookieStr.split("; ");
+// // 		console.log("cookies 값들 :", cookies)
 
-	//자바의 CookieUtil 마이그레이션 : 기존에 있던것을 그대로 가져오는것 
-	function getCookieValue(cookieStr, cookieName) {
-		//console.log("getCookieValue 진입 확인");
-		//String cookies[] = cookieStr.split("; ");
-		var cookies = cookieStr.split("; ");
-// 		console.log("cookies 값들 :", cookies)
+// 		//for (String cookieString : cookies) {
+// 		for ( var i in cookies) {
+// 			// cookieString : 쿠키이름:쿠키값
+// 			//String[] cookie = cookieString.split("=");
+// 			var cookie = cookies[i].split("=");
+// // 			console.log("for문 진입 확인 및 cookie[] = cookies[i].split('=')값들 :",	cookie)
 
-		//for (String cookieString : cookies) {
-		for ( var i in cookies) {
-			// cookieString : 쿠키이름:쿠키값
-			//String[] cookie = cookieString.split("=");
-			var cookie = cookies[i].split("=");
-// 			console.log("for문 진입 확인 및 cookie[] = cookies[i].split('=')값들 :",	cookie)
+// 			// cookie[0] : 쿠키이름
+// 			// cookie[1] ::쿠키값
 
-			// cookie[0] : 쿠키이름
-			// cookie[1] ::쿠키값
+// 			//if (cookie[0].equals(cookieName)) {
+// 			if (cookie[0] == cookieName) {
+// 				console.log("if문 진입 확인 및 cookie[1]값 :", cookie[1]);
+// 				return cookie[1];
+// 			}
+// 		}
+// 		return "";
+// 	}
 
-			//if (cookie[0].equals(cookieName)) {
-			if (cookie[0] == cookieName) {
-				console.log("if문 진입 확인 및 cookie[1]값 :", cookie[1]);
-				return cookie[1];
-			}
-		}
-		return "";
-	}
-
-	//cookie 값 설정 : cookieName : 쿠키명, cookieValue : 쿠키값,expires : 유효기간(일수)
-	function addCookie(cookieName, cookieValue, expires) {
-		var dt = new Date(); //지금 현재날짜 ==> expires 만큼 미래날짜로 변경 
-		dt.setDate(dt.getDate() + parseInt(expires));
-		console.log(dt);
+// 	//cookie 값 설정 : cookieName : 쿠키명, cookieValue : 쿠키값,expires : 유효기간(일수)
+// 	function addCookie(cookieName, cookieValue, expires) {
+// 		var dt = new Date(); //지금 현재날짜 ==> expires 만큼 미래날짜로 변경 
+// 		dt.setDate(dt.getDate() + parseInt(expires));
+// 		console.log(dt);
 		
-		document.cookie = cookieName + "=" + cookieValue + "; "
-				+ "path=/; expires=" + dt.toGMTString();
-	}
+// 		document.cookie = cookieName + "=" + cookieValue + "; "
+// 				+ "path=/; expires=" + dt.toGMTString();
+// 	}
 
-	//cookie 값 삭제
-	function deleteCookie(cookieName) {
-		//날짜 값을 -1로 하여 이전일자로 하면 삭제의 개념이 된다
-		addCookie(cookieName, "",-1)
-	}
+// 	//cookie 값 삭제
+// 	function deleteCookie(cookieName) {
+// 		//날짜 값을 -1로 하여 이전일자로 하면 삭제의 개념이 된다
+// 		addCookie(cookieName, "",-1)
+// 	}
 	
 	// html문서 로딩이 완료되고나서 실행되는 코드 - $(function()) 사용 
 		$(function(){
@@ -124,10 +121,12 @@
 <body>
 
 	<div class="container">
-
+<!-- 	wrapper를 사용한 값을 확인하기  -->
+	UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %>
+	
 		<form class="form-signin" id="frm"
-			action="<%=request.getContextPath()%>/loginController" method="post">
-<%-- 			action="<%=request.getContextPath()%>/loginController.do" method="post"> --%>
+			action="${pageContext.request.contextPath }/loginController" method="post">
+<%-- 			action="${pageContext.request.contextPath }/loginController.do" method="post"> --%>
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="userid" class="sr-only">userid</label>
 			 <input type="text" id="userid" class="form-control" 

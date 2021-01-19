@@ -3,7 +3,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,23 +15,13 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
-
 <title>AllUser.Jsp</title>
-
-
-
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath }/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
 </head>
-<script>
-
-</script>
-
 <body>
-
-
 	<%@include file="/common/header.jsp"%>
 
 	<div class="container-fluid">
@@ -56,42 +47,14 @@
 								</tr>
 								
 								<!-- import유의 -->
-								<%
-// 								SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-								SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
-// 								==> 메소드가 문자열을 리턴하므로 바로 reg_dt에 적용해주면 된다
-								List<UserVo> userList = (List<UserVo>) request.getAttribute("userlist");
-								if(userList!=null){
-								
-									//방법 1
-								for (int i = 0; i < userList.size(); i++) {
-									
-									//방법2 :  향상된 for문 사용
-						// for (UserVo vo :(List<UserVo>) request.getAttribute("userlist") ) {
-									UserVo vo = userList.get(i);
-								
-									%>
-								
+								<c:forEach items="${userlist }" var="user">
 								<tr>
-									<td><%=vo.getUserid() %></td>
-									<td><%=vo.getUsernm() %></td>
-									<td><%=vo.getAlias() %></td>
-									
-<!-- 									방법 1 if문으로 비교하기 
-<%-- 									<%if(vo.getReg_dt()!=null){%>  --%>
-<%-- 									<td><%=sdf.format(vo.getReg_dt()) %></td> --%>
-<%-- 									<%}else{%> --%>
-<%-- 									<% } %> --%>
-								</tr> -->
-								
-<!-- 								방법 2 : vo 에서 임의로 매소드를 추가하기  -->
-									<td><%=vo.getReg_dt_fmt() %></td>
-	
-								
-								<%
-									}
-								}
-								%>
+									<td>${user.userid }</td>
+									<td>${user.usernm }</td>
+									<td>${user.alias  }</td>
+									<td><fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/></td>
+								</tr>
+								</c:forEach>
 							</table>
 						</div>
 

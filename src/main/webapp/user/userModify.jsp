@@ -13,9 +13,9 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@include file="/common/common_lib.jsp"%>
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath }/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
 
 <script>
 $(function(){
@@ -51,7 +51,7 @@ $(function(){
 				<% UserVo userVo = (UserVo) request.getAttribute("user"); %>
 
    			  <form class="form-horizontal" role="form" 
-   			  action="<%=request.getContextPath()%>/userModify" method="POST">
+   			  action="${pageContext.request.contextPath }/userModify" method="POST">
                
                <input type="hidden" name="userid" value="<%=userVo.getUserid() %>"/>
                

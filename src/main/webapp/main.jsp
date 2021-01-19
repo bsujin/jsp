@@ -16,17 +16,17 @@
 <!-- <script -->
 <!-- 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-<%-- <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" --%>
+<%-- <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" --%>
 <!-- 	rel="stylesheet"> -->
 
 <!-- Bootstrap core CSS -->
-<%-- <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath }/js/bootstrap.js"></script> --%>
 <%@include file="/common/common_lib.jsp"%>
 
 <!-- Custom styles for this template -->
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath }/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
 </head>
 
 <body>

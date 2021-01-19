@@ -15,9 +15,9 @@
 <title>user.Jsp</title>
 
 <%@include file="/common/common_lib.jsp"%>
-<link href="<%=request.getContextPath()%>/css/dashboard.css"
+<link href="${pageContext.request.contextPath }/css/dashboard.css"
 	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/blog.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 					UserVo userVo = (UserVo) request.getAttribute("user");
 				%>
 
-				<form class="form-horizontal" role="form" action="<%=request.getContextPath()%>/userModify">
+				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify">
 				
 					<input type="hidden" name="userid" value="<%=userVo.getUserid() %>"/>
 					<div class="form-group">
