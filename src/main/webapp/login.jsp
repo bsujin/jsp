@@ -121,12 +121,15 @@
 <body>
 
 	<div class="container">
+<!-- 	application Listener 사용 확인 -->
+	cp : ${cp } / <%=application.getAttribute("cp") %> <br>
+	
 <!-- 	wrapper를 사용한 값을 확인하기  -->
-	UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %>
+	UNT_CD : ${param.UNT_CD } / <%=request.getParameter("UNT_CD") %> <br>
 	
 		<form class="form-signin" id="frm"
-			action="${pageContext.request.contextPath }/loginController" method="post">
-<%-- 			action="${pageContext.request.contextPath }/loginController.do" method="post"> --%>
+			action="${cp }/loginController" method="post">
+<%-- 			action="${cp }/loginController.do" method="post"> --%>
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="userid" class="sr-only">userid</label>
 			 <input type="text" id="userid" class="form-control" 

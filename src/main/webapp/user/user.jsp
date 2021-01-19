@@ -17,22 +17,22 @@
 <title>user.Jsp</title>
 
 <%@include file="/common/common_lib.jsp"%>
-<link href="${pageContext.request.contextPath }/css/dashboard.css"
+<link href="${cp }/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
+<link href="${cp }/css/blog.css" rel="stylesheet">
 <script type="text/javascript">
 $(function(){
 	$("#modifyBtn").on("click", function(){
 		$("#frm").attr("method", "get");
-		$("#frm").attr("action", "${pageContext.request.contextPath }/userModify");
-		$("#frm").attr("action", "${pageContext.request.contextPath }/userModify");
+		$("#frm").attr("action", "${cp }/userModify");
+		$("#frm").attr("action", "${cp }/userModify");
 		$("#frm").submit();
 	});
 	
 	$("#deleteBtn").on("click", function(){
 		$("#frm").attr("method", "post");
-		$("#frm").attr("action", "${pageContext.request.contextPath }/deleteUser");
-		$("#frm").attr("action", "${pageContext.request.contextPath }/deleteUser");
+		$("#frm").attr("action", "${cp }/deleteUser");
+		$("#frm").attr("action", "${cp }/deleteUser");
 		$("#frm").submit();
 	});
 })
@@ -49,7 +49,7 @@ $(function(){
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-				<form class="form-horizontal" role="form" action="${pageContext.request.contextPath }/userModify">
+				<form class="form-horizontal" role="form" action="${cp }/userModify">
 				
 					<input type="hidden" name="userid" value="${user.userid}"/>
 					<div class="form-group">
@@ -57,7 +57,7 @@ $(function(){
 						<div class="col-sm-10">
 							<!-- 							<input type="text" class="form-control" id="userId" name="userId" -->
 							<!-- 								placeholder="사용자 아이디"> -->
-							<label class="control-label">${user.userid() }</label>
+							<label class="control-label">${user.userid }</label>
 						</div>
 					</div>
 

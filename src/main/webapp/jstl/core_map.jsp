@@ -40,7 +40,7 @@
 	
 	방법 1 : <a href="<c:url value="/userRegist"/>">사용자 등록 </a>
 	방법 2 : <a href="${cp }/userRegist">사용자 등록 </a>
-	방법 3 : <a href="${pageContext.request.contextPath }/userRegist">사용자 등록 </a>
+	방법 3 : <a href="${cp }/userRegist">사용자 등록 </a>
 	
 	var 속성을 적용하지 않은 경우 : 태그를 작성한 곳에 출력 <c:url value="/userRegist"/><br>
 	var 속성을 적용한 경우 : var 속성으로 저장만 된다 (el을 통해 활용)<c:url value="/userRegist" var="url"/><br>

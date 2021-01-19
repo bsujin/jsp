@@ -16,7 +16,7 @@
 		
 	-->
 	param : [${param.lang}]
-	<form action="${pageContext.request.contextPath }/jstl/selectLang_sem.jsp">
+	<form action="${cp }/jstl/selectLang_sem.jsp">
 	<select name="lang">
 		<option value="ko"<c:if test="${param.lang == 'ko'}"> selected</c:if>>한국어</option>
 		<option value="en"<c:if test="${param.lang == 'en'}"> selected</c:if>>english</option>

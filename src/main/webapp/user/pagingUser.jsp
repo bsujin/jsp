@@ -21,9 +21,9 @@
 <title>PagingUser.Jsp</title>
 
 <%@include file="/common/common_lib.jsp"%>
-<link href="${pageContext.request.contextPath }/css/dashboard.css"
+<link href="${cp }/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/blog.css"
+<link href="${cp }/css/blog.css"
 	rel="stylesheet">
 </head>
 <script type="text/javascript">
@@ -56,7 +56,7 @@
 <body>
 	<!-- 	단순정보이므로 get방식 , method를 따로 지정 안해도 된다 -->
 	<%@include file="/common/header.jsp"%>
-	<form id="frm" action="${pageContext.request.contextPath }/user">
+	<form id="frm" action="${cp }/user">
 		<input type="hidden" id="userid" name="userid" value="/">
 
 		<div class="container-fluid">
@@ -102,7 +102,7 @@
 								 --%>
 									<!-- 가장 이전페이지 -->
 									<li class="prev"><a
-										href="${pageContext.request.contextPath }/pagingUser?page=1&pageSize=${pageVo.getPageSize() }">«</a>
+										href="${cp }/pagingUser?page=1&pageSize=${pageVo.getPageSize() }">«</a>
 									</li>
 									<c:forEach begin="1" end="${pagination }" var="i">
 										<c:choose>
@@ -111,13 +111,13 @@
 											</c:when>
 											<c:otherwise>
 												<li><a
-													href="${pageContext.request.contextPath }/pagingUser?page=${i}&pageSize=${pageVo.getPageSize() }">${i}</a></li>
+													href="${cp }/pagingUser?page=${i}&pageSize=${pageVo.getPageSize() }">${i}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									<!-- 가장 마지막 페이지 -->
 									<li class="next"><a
-										href="${pageContext.request.contextPath }/pagingUser?page=${pagination }&pageSize=${pageVo.getPageSize() }">»</a>
+										href="${cp }/pagingUser?page=${pagination }&pageSize=${pageVo.getPageSize() }">»</a>
 									</li>
 								</ul>
 							</div>

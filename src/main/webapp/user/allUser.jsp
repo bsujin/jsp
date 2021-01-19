@@ -17,9 +17,9 @@
 <link rel="icon" href="../../favicon.ico">
 <title>AllUser.Jsp</title>
 <%@include file="/common/common_lib.jsp"%>
-<link href="${pageContext.request.contextPath }/css/dashboard.css"
+<link href="${cp }/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
+<link href="${cp }/css/blog.css" rel="stylesheet">
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>

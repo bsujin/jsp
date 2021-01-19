@@ -14,9 +14,9 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <%@include file="/common/common_lib.jsp"%>
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath }/css/dashboard.css"
+<link href="${cp }/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
+<link href="${cp }/css/blog.css" rel="stylesheet">
 
 <script>
 $(function(){
@@ -50,7 +50,7 @@ $(function(){
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
    			  <form class="form-horizontal" role="form" 
-   			  action="${pageContext.request.contextPath }/userModify" method="POST">
+   			  action="${cp }/userModify" method="POST">
                
                <input type="hidden" name="userid" value="${user.userid }" />
                
