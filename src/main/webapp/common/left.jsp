@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <div class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
-		<li class="active"><a href="<%=request.getContextPath() %>/main.jsp">Main <span class="sr-only">(current)</span></a></li>
-		<li class="active"><a href="<%=request.getContextPath() %>/allUser">현재 사용자</a></li>
-		<li class="active"><a href="<%=request.getContextPath() %>/allEmp">직원 전체조회</a></li>
-		<li class="active"><a href="<%=request.getContextPath() %>/pagingUser">사용자 페이징 리스트</a></li>
+		<li class="active"><a href="${pageContext.request.contextPath }/main.jsp">Main <span class="sr-only">(current)</span></a></li>
+		<li class="active"><a href="${pageContext.request.contextPath }/allUser">현재 사용자</a></li>
+		<li class="active"><a href="${pageContext.request.contextPath }/allEmp">직원 전체조회</a></li>
+		<li class="active"><a href="${pageContext.request.contextPath }/pagingUser">사용자 페이징 리스트</a></li>
 		
 		<%--
 			/alluser 요청을 처리할 servlet(controller)
