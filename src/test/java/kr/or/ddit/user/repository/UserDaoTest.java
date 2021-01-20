@@ -30,7 +30,7 @@ public class UserDaoTest {
 		userDao = new UserDao();
 		
 		UserVo userVo = new UserVo("test","대덕인재","test", new Date(),
-										   "개발원 m", "대전시 중구 중앙로76","4층 대덕인재개발원","34940");
+										   "개발원 m", "대전시 중구 중앙로76","4층 대덕인재개발원","34940","brown.png","uuid-generated-filename.png");
 		userDao.registerUser(userVo);
 		
 		// 신규 입력 테스트를 위해 테스트 과정에서 입력된 데이터를 삭제 
@@ -54,7 +54,7 @@ public class UserDaoTest {
 		List<UserVo> userList = userDao.selectAllUser();
 
 		/*** Then ***/
-		assertEquals(14, userList.size());
+		assertEquals(16, userList.size());
 		
 	}
 
@@ -94,7 +94,7 @@ public class UserDaoTest {
 
 		/***Then***/
 		assertEquals(5, pageList.size());
-		assertEquals(14, userCnt);
+		assertEquals(16, userCnt);
 		
 	}
 	
@@ -108,7 +108,7 @@ public class UserDaoTest {
 //		System.out.println(userCnt);
 		
 		/***Then***/
-		assertEquals(14, userCnt);
+		assertEquals(16, userCnt);
 	}
 	@Test
 	public void modifyUserTest() {
@@ -117,7 +117,7 @@ public class UserDaoTest {
 		
 		//userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode
 		UserVo userVo = new UserVo("ddit","대덕인재","dditpass", new Date(),
-								   "개발원 m", "대전시 중구 중앙로76","4층 대덕인재개발원","34940");
+								   "개발원 m", "대전시 중구 중앙로76","4층 대덕인재개발원","34940","brown.png","uuid-generated-filename.png");
 		
 		/*** When ***/
 		int updateCnt = userDao.modifyUser(userVo);

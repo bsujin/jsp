@@ -1,0 +1,28 @@
+
+String contentDisposition = "form-data"; name="file"' filename="brown.png";
+
+FileUtil.getFileName()을 테스트 할 수 있는 테스트 코드 작성
+
+==> brown.png
+
+
+TDD : Test Driven Development
+ - 테스트 코드를 지속적으로 만들어가면서 운영코드를 지속적으로 수정하는것
+ - 운영코드를 수정 (refactoring) 이라 한다 
+ 	-> 운영코드의 동작은 그대로 유지하면서 코드를 바꾸는 것 : refactoring 
+ 	-> refactoring의 전제조건은 테스트 코드가 있어야한다
+ 	 
+테스트 코드 ==> 성공 ==> 새로운 요구사항 ==> 테스트 코드 ==> 실패 ==> 운영코드 수정 ==> 테스트 코드 실행 
+					새로운 요구사항 ==> 테스트 코드 ==> 실패 ==> 운영코드 수정 ==> 테스트 코드 실행 
+					새로운 요구사항 ==> 테스트 코드 ==> 실패 ==> 운영코드 수정 ==> 테스트 코드 실행 		
+
+
+==============================================================================
+
+파일 업로드시 준비사항
+1. form 태그 enctype 속성 ==> enctype ="multypart/form-data"
+2. form 태그 method 속성 ==> method="post"
+3. servlet ==> @MultipartConfig  / 사용을 안하면 inputStreem - outputStreem 사용하기
+
+
+

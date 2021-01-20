@@ -25,7 +25,7 @@ public class UserServiceTest {
 		userService = new UserService();
 
 		// 테스트에 사용할 신규 사용자 추가
-		UserVo userVo = new UserVo("test", "대덕인재", "test", new Date(), "개발원 m", "대전시 중구 중앙로76", "4층 대덕인재개발원", "34940");
+		UserVo userVo = new UserVo("test", "대덕인재", "test", new Date(), "개발원 m", "대전시 중구 중앙로76", "4층 대덕인재개발원", "34940","brown.png","uuid-generated-filename.png");
 		userService.registerUser(userVo);
 
 		// 신규 입력 테스트를 위해 테스트 과정에서 입력된 데이터를 삭제 
@@ -49,7 +49,7 @@ public class UserServiceTest {
 		List<UserVo> userList = userService.selectAllUser();
 
 		/*** Then ***/
-		assertEquals(14, userList.size());
+		assertEquals(16, userList.size());
 
 	}
 
@@ -100,7 +100,7 @@ public class UserServiceTest {
 
 		/*** Then ***/
 		assertEquals(5, pageList.size());
-		assertEquals(14, userCnt);
+		assertEquals(16, userCnt);
 
 	}
 	

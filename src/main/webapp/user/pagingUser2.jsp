@@ -21,9 +21,9 @@
 
 
 <%@include file="/common/common_lib.jsp"%>
-<link href="${pageContext.request.contextPath }/css/dashboard.css"
+<link href="${cp }/css/dashboard.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet">
+<link href="${cp }/css/blog.css" rel="stylesheet">
 </head>
 
 <body>
@@ -67,7 +67,7 @@
 									<td><%=vo.getUserid() %></td>
 									<td><%=vo.getUsernm() %></td>
 									<td><%=vo.getAlias() %></td>
-									<td><%=vo.getReg_dt_fmt() %></td>
+<%-- 									<td><%=vo.getReg_dt_fmt() %></td> --%>
 									<%
 									}
 								%>
@@ -92,7 +92,7 @@
 								%>
 						<!-- 가장 이전 페이지로  -->
 							<li class="prev">
-								<a href="${pageContext.request.contextPath }/pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
+								<a href="${cp }/pagingUser?page=1&pageSize=<%=pageVo.getPageSize()%>">«</a>
 							</li>
 							<% 
 							for(int i = 1; i<=pagination; i++){ 
@@ -101,19 +101,19 @@
 								<li class="action"><%=i %></li> 
 								<% }
 								else{%>
-								<li><a href="${pageContext.request.contextPath }/pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
+								<li><a href="${cp }/pagingUser?page=<%=i %>&pageSize=<%=pageVo.getPageSize()%>"><%=i %></a></li>
 								<%}
 							}%>
 							<!--  가장 마지막 페이지로-->
 							<li class="next">
-								<a href="${pageContext.request.contextPath }/pagingUser?page=<%=pagination%>&pageSize=<%=pageVo.getPageSize()%>">»</a>
+								<a href="${cp }/pagingUser?page=<%=pagination%>&pageSize=<%=pageVo.getPageSize()%>">»</a>
 							</li>
 								
-<%-- 								<li><a href="${pageContext.request.contextPath }/pagingUser?page=1&pageSize=5">1</a></li> --%>
-<%-- 								<li><a href="${pageContext.request.contextPath }/pagingUser?page=2&pageSize=5">2</a></li> --%>
-<%-- 								<li><a href="${pageContext.request.contextPath }/pagingUser?page=3&pageSize=5">3</a></li> --%>
-<%-- 								<li><a href="${pageContext.request.contextPath }/pagingUser?page=4&pageSize=5">4</a></li> --%>
-<%-- 								<li><a href="${pageContext.request.contextPath }/pagingUser?page=5&pageSize=5">5</a></li> --%>
+<%-- 								<li><a href="${cp }/pagingUser?page=1&pageSize=5">1</a></li> --%>
+<%-- 								<li><a href="${cp }/pagingUser?page=2&pageSize=5">2</a></li> --%>
+<%-- 								<li><a href="${cp }/pagingUser?page=3&pageSize=5">3</a></li> --%>
+<%-- 								<li><a href="${cp }/pagingUser?page=4&pageSize=5">4</a></li> --%>
+<%-- 								<li><a href="${cp }/pagingUser?page=5&pageSize=5">5</a></li> --%>
 							</ul>
 						</div>
 					</div>

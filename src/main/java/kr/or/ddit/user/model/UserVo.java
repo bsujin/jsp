@@ -21,7 +21,7 @@ public class UserVo {
    
    
    public UserVo(String userid, String usernm, String pass, Date reg_dt, String alias, String addr1,
-         String addr2, String zipcode) {
+         String addr2, String zipcode, String filename, String realfilename) {
       this.userid = userid;
       this.usernm = usernm;
       this.pass = pass;
@@ -30,6 +30,8 @@ public class UserVo {
       this.addr1 = addr1;
       this.addr2 = addr2;
       this.zipcode = zipcode;
+      this.filename = filename;
+      this.realfilename = realfilename;
    }
 
 
@@ -94,13 +96,15 @@ public class UserVo {
       this.zipcode = zipcode;
    }
    public String getFilename() {
-      return filename == null ? "" : filename;
+//      return filename == null ? "" : filename;
+      return filename;
    }
    public void setFilename(String filename) {
       this.filename = filename;
    }
    public String getRealfilename() {
-      return realfilename == null ? "" : realfilename;
+//      return realfilename == null ? "" : realfilename;
+	   return realfilename;
    }
    public void setRealfilename(String realfilename) {
       this.realfilename = realfilename;

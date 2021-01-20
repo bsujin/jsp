@@ -1,8 +1,8 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +17,7 @@
 <title>user.Jsp</title>
 
 <%@include file="/common/common_lib.jsp"%>
-<link href="${cp }/css/dashboard.css"
-	rel="stylesheet">
+<link href="${cp }/css/dashboard.css" rel="stylesheet">
 <link href="${cp }/css/blog.css" rel="stylesheet">
 <script type="text/javascript">
 $(function(){
@@ -49,19 +48,26 @@ $(function(){
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-				<form class="form-horizontal" role="form" action="${cp }/userModify">
-				
-					<input type="hidden" name="userid" value="${user.userid}"/>
+				<form class="form-horizontal" role="form" id="frm">
+
+					<input type="hidden" name="userid" value="${user.userid}" />
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
 						<div class="col-sm-10">
-							<!-- 							<input type="text" class="form-control" id="userId" name="userId" -->
-							<!-- 								placeholder="사용자 아이디"> -->
 							<label class="control-label">${user.userid }</label>
 						</div>
 					</div>
-
-
+					<!-- 사용자 프로필 사진 가져오기  -->
+					<div class="form-group">
+						<label for="profile" class="col-sm-2 control-label">사용자 사진</label>
+						<div class="col-sm-10">
+							<%-- 								<img src="${cp }/profile/${user.userid }.png" /> <br>
+								사용자 아이디를 파라미터로 보낸다  --%>
+							<a href="/profileDownload?userid=${user.userid }">   <%-- 이미지 클릭 시 파일 다운로드 --%>
+							<img src="/profile?userid=${user.userid }" /> <br>
+							</a>
+						</div>
+					</div>
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
@@ -81,15 +87,7 @@ $(function(){
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
-							<!-- 							<input type="password" class="form-control" id="pass" name="pass" -->
-							<!-- 								placeholder="Password"> -->
-<%-- 							<% --%>
-// 							String pass = userVo.getPass();
-// 							if (pass != null) {
-// 								pass = "******";
-// 							}
-<%-- 							%> --%>
-<!-- 							<label class="control-label"><${user.pass }</label> -->
+							<!-- 							<label class="control-label"><${user.pass }</label> -->
 							<label class="control-label">****</label>
 						</div>
 					</div>
@@ -98,7 +96,8 @@ $(function(){
 						<div class="col-sm-10">
 							<!-- 							<input type="text" class="form-control" id="userAlias" -->
 							<!-- 								name="userAlias" placeholder="별명"> -->
-							<label class="control-label"><fmt:formatDate value="${user.reg_dt}" pattern="yyyy.MM.dd"/></label>
+							<label class="control-label"> <fmt:formatDate
+									value="${user.reg_dt}" pattern="yyyy.MM.dd" /></label>
 						</div>
 					</div>
 					<div class="form-group">
@@ -128,8 +127,10 @@ $(function(){
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="button" id="modifyBtn" class="btn btn-default">사용자 수정</button>
-						<button type="button" id="deleteBtn"  class="btn btn-default">사용자 삭제</button>
+							<button type="button" id="modifyBtn" class="btn btn-default">사용자
+								수정</button>
+							<button type="button" id="deleteBtn" class="btn btn-default">사용자
+								삭제</button>
 						</div>
 					</div>
 				</form>
