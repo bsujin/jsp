@@ -44,6 +44,7 @@ public class UserService implements UserServiceI {
 	public int registerUser(UserVo userVo) {
 		return dao.registerUser(userVo);
 	}
+	
 	@Override
 	public int deleteUser(String userid) {
 		return dao.deleteUser(userid);

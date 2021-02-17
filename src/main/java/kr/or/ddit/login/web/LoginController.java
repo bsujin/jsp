@@ -21,7 +21,7 @@ import kr.or.ddit.user.service.UserServiceI;
 public class LoginController extends HttpServlet{
 	
 	private UserServiceI userService = new UserService();
-	private static final double PI = 3.14;
+//	private static final double PI = 3.14;
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
 	@Override

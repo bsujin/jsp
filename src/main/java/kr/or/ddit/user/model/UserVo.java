@@ -1,6 +1,5 @@
 package kr.or.ddit.user.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserVo {

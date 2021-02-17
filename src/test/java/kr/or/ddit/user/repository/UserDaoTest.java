@@ -89,7 +89,7 @@ public class UserDaoTest {
 		
 		/***When***/
 		Map<String, Object> map = userService.selectPagingUser(pageVo);
-		List<UserVo> pageList = (List<UserVo>)map.get("userList");
+		List<UserVo> pageList = (List<UserVo>)map.get("pageList");
 		int userCnt = (int)map.get("userCnt");
 
 		/***Then***/
@@ -100,16 +100,11 @@ public class UserDaoTest {
 	
 	@Test
 	public void selectAllUserCnt() {
-		/***Given***/
-//		UserDaoI userDao = new UserDao();
-
-		/***When***/
 		int userCnt = userDao.selectAllUserCnt();
-//		System.out.println(userCnt);
 		
-		/***Then***/
 		assertEquals(16, userCnt);
 	}
+	
 	@Test
 	public void modifyUserTest() {
 		/*** Given ***/

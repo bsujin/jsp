@@ -25,7 +25,7 @@ import kr.or.ddit.util.FileUtil;
 @MultipartConfig
 @WebServlet("/userModify")
 public class userModify extends HttpServlet{
-private static final Logger logger = LoggerFactory.getLogger(userModify.class);
+	private static final Logger logger = LoggerFactory.getLogger(userModify.class);
    private UserServiceI userService = new UserService();
    
    @Override
@@ -50,6 +50,7 @@ private static final Logger logger = LoggerFactory.getLogger(userModify.class);
       String usernm = req.getParameter("usernm");
       String pass = req.getParameter("pass");
       logger.debug("! reg_dt start" );
+      
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
       Date reg_dt = null;
       logger.debug("! reg_dt {}",req.getParameter("reg_dt") );
@@ -60,7 +61,7 @@ private static final Logger logger = LoggerFactory.getLogger(userModify.class);
       } catch (ParseException e) {
          e.printStackTrace();
       }
-//      Date reg_dt = req.getParameter("reg_dt");
+      
       String alias = req.getParameter("alias");
       String addr1 = req.getParameter("addr1");
       String addr2 = req.getParameter("addr2");

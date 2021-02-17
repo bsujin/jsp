@@ -33,7 +33,7 @@ public class ProfileDownloadServlet extends HttpServlet {
 		String userid = req.getParameter("userid");
 		UserVo userVo = userService.selectUser(userid);
 
-		// header 정보 추가
+		// header 정보 추가 (Content-Disposition- header 정보) 
 		resp.setHeader("Content-Disposition", "attachment; filename=" + userVo.getFilename());
 
 		// 파일 입출력을 통해 사진을 읽어들여 response 객체의 ouputStream으로 응답을 생성한다
